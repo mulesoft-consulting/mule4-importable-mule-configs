@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+
+	<flow name="eframework.auditLogFlow">
+		<logger level="WARN" doc:name="Logger" message="Option Two auditLog Action" category="auditLog"/>
+	</flow>
+	
+	<flow name="eframework.requestPayloadLogFlow">
+		<set-variable value="REQUEST" doc:name="payloadType REQUEST" variableName="payloadType"/>
+		<flow-ref doc:name="eframework.payloadLogFlow" name="eframework.payloadLogFlow"/>
+	</flow>
+	
+	<flow name="eframework.responsePayloadLogFlow">
+		<set-variable value="RESPONSE" doc:name="payloadType RESPONSE" doc:id="2670c419-b5bc-46fa-a4d9-e212c013f624" variableName="payloadType"/>
+		<flow-ref doc:name="eframework.payloadLogFlow" name="eframework.payloadLogFlow"/>
+	</flow>
+	
+	<flow name="eframework.payloadLogFlow">
+		<choice doc:name="Choice" doc:id="a9ab13ed-2139-451f-8e35-aa404bdef503" >
+			<when expression="#[vars.payloadType == null]" >
+			<set-variable value="REQUEST" doc:name="payloadType REQUEST" variableName="payloadType"/>
+			</when>
+		</choice>
+		<logger level="INFO" doc:name="Logger" message="Option Two #[vars.payloadType] payloadLog Action" category="payloadLog"/>
+	</flow>
+	
+	<flow name="eframework.errorTransactionFlow">
+		<logger level="ERROR" doc:name="Logger" message="Option Two errorTransaction Action" category="errorTransaction"/>
+	</flow>
+	
+	<flow name="eframework.retryTransactionFlow">
+		<logger level="INFO" doc:name="Logger" message="Option Two retryTransaction Action" category="retryTransaction"/>
+	</flow>
+	
+	<flow name="eframework.notificationFlow">
+		<logger level="INFO" doc:name="Logger" message="Option Two notification Action" category="notification"/>
+	</flow>
+	
+	
+
+</mule>
