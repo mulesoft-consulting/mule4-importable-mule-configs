@@ -1,0 +1,22 @@
+{
+  "configs": [
+    "test-imported-flows.xml",
+    "config.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "mule4-importing-mule-config-files",
+  "minMuleVersion": "4.1.1",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedResources": [
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

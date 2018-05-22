@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="test-importable-flowsFlow" doc:id="1e2e14fe-2684-4b6a-b1bc-5bcf973d8b24" maxConcurrency="1">
+		<scheduler doc:name="Scheduler" doc:id="657ed511-715c-4c82-aafd-751d284a9863" >
+			<scheduling-strategy >
+				<fixed-frequency frequency="1" timeUnit="HOURS"/>
+			</scheduling-strategy>
+		</scheduler>
+		<flow-ref doc:name="eframework.auditLogFlow" doc:id="bf1a41ff-feb2-4dc1-8b64-956ae9708619" name="eframework.auditLogFlow"/>
+		<flow-ref doc:name="eframework.errorTransactionFlow" doc:id="d7898694-58f7-4567-a330-ed49a5acba7a" name="eframework.errorTransactionFlow"/>
+		<flow-ref doc:name="eframework.notificationFlow" doc:id="1bf18378-4800-4a45-b38c-5fb0a03a761a" name="eframework.notificationFlow"/>
+		<flow-ref doc:name="eframework.retryTransactionFlow" doc:id="845e062b-2aaa-4b18-9671-82b25bf2930b" name="eframework.retryTransactionFlow"/>
+		<flow-ref doc:name="eframework.requestPayloadLogFlow" doc:id="c18117ff-6fbe-47c1-b5a3-58297da04b41" name="eframework.requestPayloadLogFlow"/>
+		<flow-ref doc:name="eframework.responsePayloadLogFlow" doc:id="dbf2709d-418f-43e1-9977-e58773f2b9c9" name="eframework.responsePayloadLogFlow"/>
+		<remove-variable doc:name="Remove payloadType" doc:id="63d5987f-56ee-4fa3-b00b-2a4808fc15c5" variableName="payloadType"/>
+		<flow-ref doc:name="eframework.payloadLogFlow" doc:id="75c3115d-e91f-4b02-b95f-b17f2a4db224" name="eframework.payloadLogFlow"/>
+	</flow>
+</mule>
